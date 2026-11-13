@@ -34,12 +34,12 @@ class RecordsTest(unittest.TestCase):
         return path
 
     def test_fixture_size_and_entities(self):
-        self.assertEqual(len(self.records), 288)
-        self.assertGreaterEqual(len({row[ENTITY] for row in self.records}), 24)
+        self.assertEqual(len(self.records), 322)
+        self.assertGreaterEqual(len({row[ENTITY] for row in self.records}), 29)
 
     def test_group_counts_are_conserved(self):
         result = summarize(self.records)
-        self.assertEqual(sum(group['rows'] for group in result['groups']), 288)
+        self.assertEqual(sum(group['rows'] for group in result['groups']), 322)
         self.assertEqual(result['entities'], len({row[ENTITY] for row in self.records}))
 
     def test_missing_measurements_have_explicit_denominator(self):
